@@ -39,3 +39,7 @@ for j in second_arr:
     add+=j
 
 print(add)
+
+
+
+
