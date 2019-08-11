@@ -51,3 +51,23 @@
 # import datetime 
 # val = datetime.datetime.now()
 # print(val)
+
+
+
+# listy = [6,7,8,9,00]
+# listy.sort(reverse=True)
+# print(listy)
+# print(listy[::-1])
+# print(listy)
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# x = thisdict.get("model")
+# print(x)
+
+# thisset = {"apple", "banana", "cherry"}
+
+# print("banana" in thisset)

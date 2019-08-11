@@ -1,0 +1,84 @@
+//- script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js")
+//- script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+//- script(src="./script.js")
+//- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.css")  
+//- script(src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.js")
+//- script(src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/mode/javascript/javascript.js")
+//- body
+//-     h2 Awesome Textarea
+//-     //- form(method="post" action="/runit")
+    //- textarea#comment_text.editable.ui-autocomplete-input( oplaceholder='This is an awesome comment box', rows='20', name='textit', cols='40', autocomplete='off', role='textbox', aria-autocomplete='list', aria-haspopup='true' onkeydown="if(event.keyCode===219){document.getElementById('comment_text').value += '{}';} if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" )
+//-     //- onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
+    //- textarea#terminal_text(style="float:right")
+//-     br
+//-     button(onClick="getdata()" type="submit") Submit
+head
+  link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/dracula.css")
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.css' rel='stylesheet')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/mode/javascript/javascript.js')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js")
+  script(src="./script.js")
+textarea#comment_text.editable.ui-autocomplete-input( oplaceholder='This is an awesome comment box', rows='20', name='textit', cols='40', autocomplete='off', role='textbox', aria-autocomplete='list', aria-haspopup='true' onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" )
+//- .editorContainer#editorContainer
+br
+button(onClick="getdata()" type="submit") Run
+br
+textarea#terminal_text
+//- script.
+//-   var editorContainer = document.querySelector('.editorContainer')
+//-   CodeMirror(editorContainer, {
+//-   lineNumbers: true,
+//-   mode: 'javascript',
+//-   value: 'print("Hello World")'
+//-   })
+  //- editorContainer.setOption('theme', 'dracula');
+//- style. 
+//-     textarea {
+//-     background-color: #000;
+//-     border: 1px solid #000;
+//-     color: #00ff00;
+//-     padding: 8px;
+//-     width:100%
+//-     height:100%
+//-     font-family: courier new;
+//-         }
+style.
+    body {
+    background: #fff;
+    }
+    button{
+        position:fixed
+        top:0px
+        left:0px
+    }
+    h2 {
+    margin-left: 55px;
+    }
+    textarea {
+    font-family: Consolas, Courier New, monospace; 
+    margin-top: 1%;
+    margin-left: 0%;
+    width: 100%;
+    height: 47%;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #000;
+    border-color: -moz-use-text-color aqua aqua -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px aqua inset;
+    color: aqua;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+    }
+    textarea:focus {
+    background: none repeat scroll 0 0 #000;
+    outline-width: 0;
+    }

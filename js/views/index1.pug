@@ -1,0 +1,78 @@
+link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css')
+link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/dracula.css')
+link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/hint/show-hint.css')
+script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js")
+section
+  textarea.code#editorContainer
+  button.copy(onClick="getdata()" type="submit") Submit
+  br
+  textarea#terminal_text
+script(src="./script.js")
+script(src='https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/htmlmixed/htmlmixed.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/css/css.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/xml/xml.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/edit/matchbrackets.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/edit/closebrackets.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/hint/show-hint.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/hint/anyword-hint.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/hint/javascript-hint.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/keymap/sublime.min.js')
+script.
+  var js_editor = document.getElementsByClassName("code");
+  Array.prototype.forEach.call(js_editor, function(el) {
+  var editor = CodeMirror.fromTextArea(el, {
+  mode: "htmlmixed",
+  htmlMode: true,
+  lineNumbers: false,
+  styleActiveLine: true,
+  theme: 'dracula',
+  lineNumbers: true
+  });
+  // Update textarea
+  function updateTextArea() {
+  editor.save();
+  }
+  editor.on('change', updateTextArea);
+  });
+style.
+    body {
+    background: #000;
+    }
+    button{
+        position:fixed
+        top:0px
+        left:0px
+    }
+    h2 {
+    margin-left: 55px;
+    }
+    textarea {
+    font-family: Consolas, Courier New, monospace; 
+    margin-top: 1%;
+    margin-left: 0%;
+    width: 100%;
+    height: 40%;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #000;
+    border-color: -moz-use-text-color aqua aqua -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px aqua inset;
+    color: aqua;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+    }
+    textarea:focus {
+    background: none repeat scroll 0 0 #000;
+    outline-width: 0;
+    }
