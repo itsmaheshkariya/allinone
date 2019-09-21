@@ -1,0 +1,46 @@
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script><div id="root"></div>
+<script type="text/babel">
+    const Router = window.ReactRouterDOM.BrowserRouter;
+    const Route =  window.ReactRouterDOM.Route;
+    const Link =  window.ReactRouterDOM.Link;
+    const hashHistory = window.ReactRouterDOM.hashHistory
+    console.log(window.ReactRouterDOM);
+class Hello extends React.Component{  render(){ return(<h1>Hello World</h1>) } }
+class Header extends React.Component{ render(){ return( <h1>Header</h1>) } }
+class Footer extends React.Component{ render(){ return( <h1>Footer</h1>) } }
+class Page2 extends React.Component{ render(){ return( <h1>Page2</h1>) } }
+class Page1 extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            count:0
+        }
+    }
+    a(){  this.setState({  count: this.state.count + 1 })  }
+    b(){  this.setState ({ count: this.state.count - 1}) }
+    b(){  this.setState ({ count: 0}) }
+    render(){ return( <div><h1>Counter</h1>
+    <button onClick={ (e)=>this.a(e) }>+</button>
+    <button onClick={ (e)=>this.b(e) }>-</button>
+    <button onClick={ (e)=>this.c(e) }>0</button>
+    <h2>{this.state.count}</h2>
+    </div>) }                    }
+class Container extends React.Component{
+    render(){ return( 
+        <div>
+            <Header />
+            <Router history={hashHistory}>
+                <Link to="Page1">Page1</Link> || <Link to="Page2">Page2</Link>
+                <Route path="/react/Page1" component={Page1} />
+                <Route path="/react/Page2" component={Page2} />
+            </Router>
+            <Footer />
+        </div>
+        
+        ) }
+}
+ReactDOM.render(<Container />,document.getElementById('root')) </script>

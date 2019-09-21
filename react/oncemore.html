@@ -1,0 +1,79 @@
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<div id="root"></div>
+<script type="text/babel">
+const {HashRouter,Link,Route,Router} = window.ReactRouterDOM
+class Header extends React.Component{
+    render()
+    {
+        return(
+            <h1>Header</h1>
+        )
+    }
+}
+class Footer extends React.Component{
+    render()
+    {
+        return(
+            <h1>Footer</h1>
+        )
+    }
+}
+class Page1 extends React.Component{
+    render()
+    {
+        return(
+            <h1>Page1</h1>
+        )
+    }
+}
+class Page2 extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            count:0
+        }
+    }
+    a(){
+        this.setState ({
+            count:this.state.count + 1
+        })
+    }
+    b(){
+        this.setState({
+        count: this.state.count - 1
+    })
+    }
+    render()
+    {
+        return(
+            <div>
+                <button onClick={(e)=>this.a(e)}>+</button>
+                <button onClick={(e)=>this.b(e)}>-</button>
+                <h1>{this.state.count}</h1>
+            </div>
+        )
+    }
+}
+class Container extends React.Component{
+    render()
+    {
+        return(
+            <div>
+                <Header />
+                <HashRouter>
+                    <Link to="/Page1">Page 1</Link>
+                    <Link to="/Page2">Page2</Link>
+                    <Route path="/Page1" component={Page1} />
+                        <Route path="/Page2" component={Page2} />
+                </HashRouter>
+                <Footer />
+            </div>
+        )
+    }
+}
+ReactDOM.render(<Container />,document.getElementById('root'))
+</script>

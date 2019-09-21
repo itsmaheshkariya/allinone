@@ -16,24 +16,27 @@ app.get('/',(req,res)=>{
   res.render('index')
 })
 app.post('/runit',(req,res)=>{
-//   fs.writeFile('here.py', req.body.textit, function (err) {
-//     if (err) throw err;
-//     try {
-//       let output = execSync('clear && python3 here.py', { encoding: 'utf-8' })
-//       res.json(output)
-//   } catch(err) {
-//     res.json(err.message.toString().replace('Command failed: clear && python3 here.py',' ').replace('File "here.py",',''))
-//   }
-// });
-fs.writeFile('mahesh.c', req.body.textit, function (err) {
-  if (err) throw err;
-  try {
-    let output = execSync('clear && gcc -o hello mahesh.c && ./hello', { encoding: 'utf-8' })
-    res.json(output)
-} catch(err) {
-  res.json(err.message.toString().replace('Command failed: clear && python3 here.py',' ').replace('File "here.py",',''))
-}
+  // console.log(req.body)
+  fs.writeFile('input.txt', req.body.stdin, function (err) {
+  fs.writeFile('here.py', req.body.textit, function (err) {
+    if (err) throw err;
+    try {
+      let output = execSync('clear && python3 here.py input.txt', { encoding: 'utf-8' })
+      res.json(output)
+  } catch(err) {
+    res.json(err.message.toString().replace('Command failed: clear && python3 here.py',' ').replace('File "here.py",',''))
+  }
 });
+});
+// fs.writeFile('mahesh.c', req.body.textit, function (err) {
+//   if (err) throw err;
+//   try {
+//     let output = execSync('clear && gcc -o hello mahesh.c && ./hello', { encoding: 'utf-8' })
+//     res.json(output)
+// } catch(err) {
+//   res.json(err.message.toString().replace('Command failed: clear && python3 here.py',' ').replace('File "here.py",',''))
+// }
+// });
   
   // fs.writeFile('here.js', req.body.textit, function (err) {
   //   if (err) throw err;

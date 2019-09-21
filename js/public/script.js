@@ -1,15 +1,25 @@
+// document.getElementById('comment_text').innerText = `
+// import sys
+// fptr = open(sys.argv[1],'r')
+// a = fptr.readline()
+// print(a)
+// `;
+
 function getdata()
 {
     var a = document.getElementById('comment_text')
+    var b = document.getElementById('stdin')
     // var a = document.getElementById('editorContainer')
 
     
 console.log(a.value)
+console.log(b.value)
 axios({
     method: 'POST',
     url: 'http://localhost:3000/runit',
     data: {
-      "textit": a.value
+      "textit": a.value,
+      "stdin":b.value
     }
   }).then(function(response) {
     console.log(response.data);
